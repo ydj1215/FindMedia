@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Londrina+Outline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@700&display=swap');
+.navbar-brand
+{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size:40px;
+}
+
+h1,h2,h3,h4
+{
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+h5
+{
+	font-size: 18px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+body
+{
+	font-family: 'Nanum Gothic', sans-serif;
+}
