@@ -77,6 +77,7 @@
 					} else {
 					%>
 						<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
+						<a class="dropdown-item" href="deleteMember.jsp">회원탈퇴</a>
 					<%
 					}
 					%>
@@ -219,7 +220,7 @@
 							<div class="form-group col-sm-4">
 								<label>제작 연도</label>
 								<select name="year" class="form-control">
-									<option value="2011">제작연도 선택</option>
+									<option value="2011">제작 연도</option>
 										<%for(int j = 1900; j<=2021; j++){ %>
 										<option value ="<%=j %>"><%=j+"년" %>
 									</option>
@@ -248,7 +249,7 @@
 						</div>
 
 						<div class="form-row">
-							<div class="form-group col-sm-3">
+							<div class="form-group col-sm-4">
 								<label>평점</label>
 								<select name="score" class="form-control">
 									<option value="★★★★★" selected>★★★★★</option>
@@ -272,7 +273,7 @@
 
 
 	<footer>
-		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>
+		<img src="image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
 	</footer>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/popper.min.js"></script>

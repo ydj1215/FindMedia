@@ -15,6 +15,7 @@
 <body>
 
 <%
+	request.setCharacterEncoding("UTF-8");
 	String memberID = null;
 
 	if(session.getAttribute("memberID") != null) {
@@ -44,7 +45,8 @@
 					<%
 					} else {
 					%>
-							<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
+						<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
+						<a class="dropdown-item" href="deleteMember.jsp">회원탈퇴</a>
 					<%
 					}
 					%>
@@ -55,7 +57,7 @@
 	</nav>
 	
 	<div class="container mt-3" style="max-width: 560px;">
-		<h3>아이디 찾기</h3>
+		<img src="image/wannafindid.JPG" width="300px" alt="FINDID"/>
 		<form method="post" action="findID.do">
 			<div class="form-group">
 				<input type="text" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
@@ -65,7 +67,7 @@
 		
 		<br><br>
 		
-		<h3>비밀번호 찾기</h3>
+		<img src="image/wannafindpw.JPG" width="300px" alt="FINDPW"/>
 		<form method="post" action="findPW.do">
 		<div class="form-group">
 				<input type="text" name="id" class="form-control" placeholder="아이디를 입력해주세요."/>
@@ -73,14 +75,14 @@
 			<div class="form-group">
 				<input type="password" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
 			</div>
-			<button type="submit" class="btn btn-danger">로그인</button>
+			<button type="submit" class="btn btn-danger">비밀번호 찾기</button>
 		</form>
 	</div>
 	
 	<br><br><br>
 	
 	<footer>
-		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>
+		<img src="image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
 	</footer>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/popper.min.js"></script>

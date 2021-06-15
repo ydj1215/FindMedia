@@ -163,5 +163,24 @@ public class MemberDAO {
 	
 		return password;
 	}
+	
+	public int deleteMember(MemberDTO MemberDTO) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("delete from member where id = ? and password = ? and nickname = ? and email = ? and name = ?;");
+			pstmt.setString(1, MemberDTO.getId());
+			pstmt.setString(2, MemberDTO.getPassword());
+			pstmt.setString(3, MemberDTO.getNickname());
+			pstmt.setString(4, MemberDTO.getEmail());
+			pstmt.setString(5, MemberDTO.getName());
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 }
 

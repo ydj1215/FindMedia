@@ -56,6 +56,7 @@
 					} else {
 					%>
 							<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
+							<a class="dropdown-item" href="deleteMember.jsp">회원탈퇴</a>
 					<%
 					}
 					%>
@@ -82,11 +83,11 @@
 	</div>
 	
 	<div style="text-align: center;">
-		<a class="navbar-brand" href="find.jsp"><img src="image/finder.JPG" width="600" alt="FindMedia"/></a>
+		<a class="navbar-brand" href="find.jsp"><img src="image/finder.JPG" width="600" alt="아이디/비밀번호 찾기"/></a>
 	</div>
 	
 	<footer>
-		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>
+		<img src="image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
 	</footer>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/popper.min.js"></script>

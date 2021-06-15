@@ -32,5 +32,10 @@ public class MemberService {
 		// TODO Auto-generated method stub
 		return MDao.findPW(MDTO);
 	}
+	
+	public int deleteMember(MemberDTO MDTO) {
+		// TODO Auto-generated method stub
+		return MDao.deleteMember(MDTO);
+	}
 }
 

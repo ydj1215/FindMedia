@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.MemberService;
 import member.MemberDTO;
+import service.MemberService;
 
-public class JoinController implements Controller {
+public class DeleteMemberController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,12 +62,12 @@ public class JoinController implements Controller {
 			MemberDTO MemberDTO = new MemberDTO(id,password,nickname,email,name);
 			
 			MemberService s = MemberService.getInstance();
-			int result = s.join(MemberDTO); 
+			int result = s.deleteMember(MemberDTO); 
 
 			if (result == -1) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('이미 존재하는 아이디 입니다.');");
+				script.println("alert('회원 탈퇴에 실패하셨습니다.');");
 				script.println("history.back();");
 				script.println("</script>");
 				script.close();
@@ -77,11 +77,12 @@ public class JoinController implements Controller {
 				session.setAttribute("memberID", id);
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('회원가입에 성공하셨습니다.');");
-				script.println("location.href = 'index.jsp'");
+				script.println("alert('회원 탈퇴에 성공하셨습니다.');");
+				script.println("location.href = 'logOut.jsp'");
 				script.println("</script>");
 				script.close();
 			}
 		}
 	}
+
 }
