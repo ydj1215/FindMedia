@@ -40,13 +40,13 @@
 					<%
 					if(memberID == null) {
 					%>
-						<a class="dropdown-item" href="login.jsp">로그인</a>
-						<a class="dropdown-item" href="join.jsp">회원가입</a>
+						<a class="dropdown-item" href="../login.jsp">로그인</a>
+						<a class="dropdown-item" href="../join.jsp">회원가입</a>
 					<%
 					} else {
 					%>
-							<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
-							<a class="dropdown-item" href="deleteMember.jsp">회원탈퇴</a>
+							<a class="dropdown-item" href="../logOut.jsp">로그아웃</a>
+							<a class="dropdown-item" href="../deleteMember.jsp">회원탈퇴</a>
 					<%
 					}
 					%>
