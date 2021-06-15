@@ -66,12 +66,11 @@ public class MemberDAO {
 			pstmt.setString(3, MemberDTO.getNickname());
 			pstmt.setString(4, MemberDTO.getEmail());
 			pstmt.setString(5, MemberDTO.getName());
-			pstmt.executeUpdate();
-			return 1;
+			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return -1;
 		}
+		return -1;
 	}
 
 	public boolean login(String id, String password) {
@@ -147,11 +146,12 @@ public class MemberDAO {
 			pstmt.setString(1, MDTO.getId());
 			pstmt.setString(2, MDTO.getEmail());
 			rs = pstmt.executeQuery();
-		 if(rs.next())
-		{
-			password = rs.getString(1);
+			
+			if(rs.next())
+			{
+				password = rs.getString(1);
+			}
 		}
-	}
 		catch(Exception e)
 		{
 			System.out.println("findPW error!" +e);
@@ -164,7 +164,119 @@ public class MemberDAO {
 		return password;
 	}
 	
-	public int deleteMember(MemberDTO MemberDTO) {
+	public String checkPassword(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String password = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select password from member where id = ?;");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				password = rs.getString(1);
+			}
+		}
+			catch (Exception e)
+			{
+				System.out.println("check error!" +e);
+			}
+			finally
+			{
+				close(conn,pstmt,rs);
+			}
+		return password;
+		}
+	
+	public String checkNickname(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String nickname = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select nickname from member where id = ?;");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				nickname = rs.getString(1);
+			}
+		}
+			catch (Exception e)
+			{
+				System.out.println("check error!" +e);
+			}
+			finally
+			{
+				close(conn,pstmt,rs);
+			}
+		return nickname;
+		}
+	
+	public String checkEmail(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String email = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select email from member where id = ?;");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				email = rs.getString(1);
+			}
+		}
+			catch (Exception e)
+			{
+				System.out.println("check error!" +e);
+			}
+			finally
+			{
+				close(conn,pstmt,rs);
+			}
+		return email;
+		}
+	
+	public String checkName(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String name = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select name from member where id = ?;");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				name = rs.getString(1);
+			}
+		}
+			catch (Exception e)
+			{
+				System.out.println("check error!" +e);
+			}
+			finally
+			{
+				close(conn,pstmt,rs);
+			}
+		return name;
+		}
+	
+		public void deleteMember(MemberDTO MemberDTO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -176,10 +288,8 @@ public class MemberDAO {
 			pstmt.setString(4, MemberDTO.getEmail());
 			pstmt.setString(5, MemberDTO.getName());
 			pstmt.executeUpdate();
-			return 1;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return -1;
+			System.out.println("DeleteMember error!" +e);
 		}
 	}
 }

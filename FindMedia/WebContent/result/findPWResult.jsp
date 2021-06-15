@@ -63,8 +63,8 @@
 					padding:50px 20px; text-align:
 					center; border-radius: 15px;
 					background: linear-gradient(to top, #E2E2E2 0%, #F0EDEC 50%, #FFFBF6 100%);
-					margin: 100px 0px; ">
-				<% 
+					margin: 10px 0px; ">
+					<% 
 					String findMemberPW = null;
 					findMemberPW = (String)session.getAttribute("findMemberPW");
 					if(findMemberPW == null){%>
@@ -93,7 +93,7 @@
 	<br><br><br>
 	
 	<footer>
-		<img src="image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
+		<img src="../image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
 	</footer>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.min.js"></script>

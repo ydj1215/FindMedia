@@ -5,7 +5,7 @@ import member.MemberDAO;
 
 public class MemberService {
 	private static MemberService MService = new MemberService(); //본인의 클래스 변수를 하나 보유
-	private MemberService() {}
+	public MemberService() {}
 	private MemberDAO MDao = MemberDAO.getInstance();
 	
 	public static MemberService getInstance()
@@ -33,9 +33,29 @@ public class MemberService {
 		return MDao.findPW(MDTO);
 	}
 	
-	public int deleteMember(MemberDTO MDTO) {
+	public String checkPassword(String id) {
 		// TODO Auto-generated method stub
-		return MDao.deleteMember(MDTO);
+		return MDao.checkPassword(id);
+	}
+	
+	public String checkNickname(String id) {
+		// TODO Auto-generated method stub
+		return MDao.checkNickname(id);
+	}
+	
+	public String checkEmail(String id) {
+		// TODO Auto-generated method stub
+		return MDao.checkEmail(id);
+	}
+	
+	public String checkName(String id) {
+		// TODO Auto-generated method stub
+		return MDao.checkName(id);
+	}
+	
+	public void deleteMember(MemberDTO MDTO) {
+		// TODO Auto-generated method stub
+		MDao.deleteMember(MDTO);
 	}
 }
 

@@ -73,7 +73,7 @@
 				<input type="text" name="id" class="form-control" placeholder="아이디를 입력해주세요."/>
 			</div>
 			<div class="form-group">
-				<input type="password" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
+				<input type="text" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
 			</div>
 			<button type="submit" class="btn btn-danger">비밀번호 찾기</button>
 		</form>

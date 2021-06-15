@@ -92,13 +92,13 @@
 			</div>
 			
 			<div style="text-align: center;">
-				<button type="submit" class="btn btn-danger">회원 탈퇴</button>
+				<input type="submit" class="btn btn-danger" value = "회원 탈퇴"/>
 			</div>
 		</form>
 	</div>
 	
 	<div style="text-align: center;">
-		<a class="navbar-brand" href="goodbye.jsp"><img src="image/finder.JPG" width="600" alt="회원 탈퇴 전에 다시 더 한번 생각해보세요."/></a>
+		<img src="image/goodbye.JPG" width="600" alt="회원 탈퇴 전에 다시 더 한번 생각해보세요."/>
 	</div>
 	
 	<footer>

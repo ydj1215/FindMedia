@@ -31,7 +31,7 @@
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">MAIN</a></li>
+					href="index.jsp">HOME</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="dropdown"
 					data-toggle="dropdown"> MEMBERSHIP </a>

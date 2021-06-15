@@ -17,16 +17,17 @@ public class DeleteMemberController implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		HttpSession session = request.getSession();
+	
 		String id = null;
 		String password = null;
 		String nickname = null;
 		String email = null;
 		String name = null;
-		
+			
 		if(request.getParameter("id") != null) {
 			id = (String) request.getParameter("id");
 		}
@@ -46,43 +47,46 @@ public class DeleteMemberController implements Controller {
 		if(request.getParameter("name") != null) {
 			name = (String) request.getParameter("name");
 		}
-		
+
 		if (id == null || password == null || nickname == null || email == null || name == null ||
 				id == "" || password == "" || nickname == "" || email == "" || name == ""){
-
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다.');");
 			script.println("history.back();");
 			script.println("</script>");
 			script.close();
-
+			
 		} else {
-			
-			MemberDTO MemberDTO = new MemberDTO(id,password,nickname,email,name);
-			
+	
 			MemberService s = MemberService.getInstance();
-			int result = s.deleteMember(MemberDTO); 
+			
+			String resultPassword = s.checkPassword(id);
+			String resultNickname= s.checkNickname(id);
+			String resultEmail = s.checkEmail(id);
+			String resultName = s.checkName(id);
+			
+			if (resultPassword.equals(password) && resultNickname.equals(nickname) && resultEmail.equals(email) && resultName.equals(name)) {
+				
+				MemberDTO MemberDTO = new MemberDTO(id,password,nickname,email,name);
+				s.deleteMember(MemberDTO);
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('회원 탈퇴에 성공하였습니다.');");
+				session.invalidate();
+				script.println("location.href='index.jsp'");
+				script.println("</script>");
+				script.close();
 
-			if (result == -1) {
+			} else {
+				
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('회원 탈퇴에 실패하셨습니다.');");
 				script.println("history.back();");
 				script.println("</script>");
 				script.close();
-
-			} else {
-
-				session.setAttribute("memberID", id);
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("alert('회원 탈퇴에 성공하셨습니다.');");
-				script.println("location.href = 'logOut.jsp'");
-				script.println("</script>");
-				script.close();
 			}
 		}
 	}
-
 }
