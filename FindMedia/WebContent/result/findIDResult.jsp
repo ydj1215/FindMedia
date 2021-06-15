@@ -63,15 +63,25 @@
 					padding:50px 20px; text-align:
 					center; border-radius: 15px;
 					background: linear-gradient(to top, #E2E2E2 0%, #F0EDEC 50%, #FFFBF6 100%);
-					margin: 100px 0px; ">
+					margin: 10px 0px; ">
 					<% 
 						String findMemberID = null;
 						findMemberID = (String)session.getAttribute("findMemberID");
 						if(findMemberID == null){%>
 							<label>관련정보가 존재하지 않습니다.</label>
 						<%}else{ %>
-							<label>당신의 비밀번호는 ${findMemberPW } 입니다.</label> 
+							<label>당신의 아이디는 ${findMemberID } 입니다.</label> 
 					<%		} %>
+			</div>
+			<div style = "margin-top: 100px;
+					width:600px; margin:0 auto;
+					padding:20px 10px 10px; text-align:
+					center; border-radius: 15px;
+					background: linear-gradient(to top, #ED213A 0%, #ED213A 50%, #93291E 100%);
+					margin: 0px 0px;
+					cursor:pointer;"
+					onclick="location.href='../login.jsp';">
+					<label style = "color: white;">바로 로그인하러 가기</label>
 			</div>
 		<br><br>
 	</div>
@@ -83,7 +93,7 @@
 	<br><br><br>
 	
 	<footer>
-		<img src="image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
+		<img src="../image/wheel.JPG" width="100%" alt="Copyright (c) FindMedia ALL Rights reserved."/>
 	</footer>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.min.js"></script>
