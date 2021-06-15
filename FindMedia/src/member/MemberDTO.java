@@ -18,7 +18,13 @@ public class MemberDTO {
 		this.email = tEmail;
 		this.name = tName;
 	}
-
+	
+	public MemberDTO(String tid, String tEmail)
+	{
+		this.id=tid;
+		this.email = tEmail;
+	}
+	
 	public String getId() {
 		return id;
 	}

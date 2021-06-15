@@ -21,6 +21,8 @@ public class FrontController extends HttpServlet {
 		map.put("/write.do", new WriteController());
 		map.put("/delete.do", new DeleteController());
 		map.put("/like.do", new LikeController());
+		map.put("/findID.do", new FindIDController());
+		map.put("/findPW.do", new FindPWController());
 	}
 	
 	@Override

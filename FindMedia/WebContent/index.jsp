@@ -8,7 +8,6 @@
 
 <!doctype html>
 <html>
-
 <head>
 <title>FindMedia</title>
 <meta charset="utf-8">
@@ -16,16 +15,14 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/custom.css">
 </head>
-
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		
 		String kind = "전체";
 		String searchType = "최신순";
 		String search = "";
-		
 		int pageNumber = 0;
+		
 		if (request.getParameter("kind") != null) {
 			kind = request.getParameter("kind");
 		}
@@ -45,10 +42,19 @@
 				System.out.println("페이지 번호를 입력하는 와중에 오류가 발생했습니다.");
 			}
 		}
+		
+		String memberID = null;
+		if(session.getAttribute("memberID") != null) {
+			memberID = (String) session.getAttribute("memberID");
+		}
+		
+		application.getContextPath();
+		request.getSession().getServletContext().getRealPath("/");
+		application.getRealPath("/image"); 
 	%>
-
+	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="index.jsp"><img src="image/logo.jpg">FindMedia</a>
+		<a class="navbar-brand" href="index.jsp"><img src="image/logo.JPG" width="200px" alt="FindMedia"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -56,15 +62,24 @@
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="index.jsp">Main</a>
+					<a class="nav-link" href="index.jsp">HOME</a>
 				</li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="dropdown"data-toggle="dropdown">MEMBERSHIP</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown">
+					<%
+					if(memberID == null) {
+					%>
 						<a class="dropdown-item" href="login.jsp">로그인</a>
 						<a class="dropdown-item" href="join.jsp">회원가입</a>
+					<%
+					} else {
+					%>
 						<a class="dropdown-item" href="logOut.jsp">로그아웃</a>
+					<%
+					}
+					%>
 					</div>
 				</li>
 			</ul>
@@ -73,14 +88,16 @@
 
 	<div class="container">
 		<form method="get" action="./index.jsp" class="form-inline mt-3">
-		
 			<select name="kind" class="form-control mx-1 mt-2">
 				<option value="전체">전체</option>
 				<option value="영화" <%if (kind.equals("영화")) out.println("selected"); %>>영화</option>
 				<option value="애니메이션" <%if (kind.equals("애니메이션")) out.println("selected"); %>>애니메이션</option>
 				<option value="도서" <%if (kind.equals("도서")) out.println("selected"); %>>도서</option>
-				<option value="음악" <%if (kind.equals("도서")) out.println("selected"); %>>음악</option>
-				<option value="기타" <%if (kind.equals("도서")) out.println("selected"); %>>기타</option>
+				<option value="음악" <%if (kind.equals("음악")) out.println("selected"); %>>음악</option>
+				<option value="음악" <%if (kind.equals("드라마")) out.println("selected"); %>>드라마</option>
+				<option value="음악" <%if (kind.equals("뮤지컬")) out.println("selected"); %>>뮤지컬</option>
+				<option value="음악" <%if (kind.equals("게임")) out.println("selected"); %>>게임</option>
+				<option value="음악" <%if (kind.equals("기타")) out.println("selected"); %>>기타</option>
 			</select>
 			
 			<select name="searchType" class="form-control mx-1 mt-2">
@@ -88,12 +105,12 @@
 				<option value="추천순" <%if (searchType.equals("추천순")) out.println("selected"); %>>추천순</option>
 			</select>
 			
-			<input type="text" name="search" class="form-control mx-1 mt-2" value="<%=search%>" placeholder="내용을 입력하세요.">
+			<input type="text" name="search" class="form-control mx-1 mt-2" value="<%=search%>" placeholder="내용을 입력하세요." style="width:40%;"/>
 			<button type="submit" class="btn btn-danger mx-1 mt-2">검색</button>
 			
 			<a class="btn btn-danger mx-1 mt-2" data-toggle="modal" href="#registerModal">등록</a>
 		</form>
-
+		
 		<%
 			ArrayList<ArtworkDTO>ArtworkList = new ArrayList<ArtworkDTO>();
 			ArtworkList = new ArtworkDAO().getList(kind, searchType, search, pageNumber);
@@ -216,6 +233,9 @@
 									<option value="애니메이션">애니메이션</option>
 									<option value="도서">도서</option>
 									<option value="음악">음악</option>
+									<option value="드라마">드라마</option>
+									<option value="뮤지컬">뮤지컬</option>
+									<option value="게임">게임</option>
 									<option value="기타">기타</option>
 								</select>
 							</div>
@@ -251,8 +271,8 @@
 	</div>
 
 
-	<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
-		Copyright (c)YDJ FindMedia ALL Rights reserved.<br>TEL.010-7637-0520
+	<footer>
+		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>
 	</footer>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/popper.min.js"></script>

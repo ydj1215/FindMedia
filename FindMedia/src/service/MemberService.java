@@ -13,14 +13,24 @@ public class MemberService {
 		return MService;
 	}
 	
-	public void join(MemberDTO MemberDTO) {
+	public int join(MemberDTO MemberDTO) {
 		// TODO Auto-generated method stub
-		MDao.join(MemberDTO);
+		return MDao.join(MemberDTO);
 	}
 	
 	public boolean login(String id, String password) {
 		// TODO Auto-generated method stub
 		return MDao.login(id, password);
+	}
+	
+	public String findID(String email) {
+		// TODO Auto-generated method stub
+		return MDao.findID(email);
+	}
+	
+	public String findPW(MemberDTO MDTO) {
+		// TODO Auto-generated method stub
+		return MDao.findPW(MDTO);
 	}
 }
 

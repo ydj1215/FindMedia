@@ -78,11 +78,12 @@ public class WriteController implements Controller {
 			score = (String) request.getParameter("score");
 		}
 		
-		if (title == null || author == null || year == 0 || kind == null || content == null || score == null  || content.equals("")) {
+		if (title == null || author == null || year == 0 || kind == null || content == null || score == null  ||
+				title == "" || author == "" || kind == "" || content == "" || score == "") {
 
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('양식에 맞게 작성해주세요.');");
+			script.println("alert('빈 곳이 존재합니다.');");
 			script.println("history.back();");
 			script.println("</script>");
 			script.close();
@@ -108,7 +109,7 @@ public class WriteController implements Controller {
 
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("location.href = './index.jsp';");
+				script.println("location.href = 'index.jsp';");
 				script.println("</script>");
 				script.close();
 				return;

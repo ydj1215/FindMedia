@@ -55,7 +55,7 @@ public class MemberDAO {
 		}
 	}
 
-	public void join(MemberDTO MemberDTO) {
+	public int join(MemberDTO MemberDTO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -67,10 +67,10 @@ public class MemberDAO {
 			pstmt.setString(4, MemberDTO.getEmail());
 			pstmt.setString(5, MemberDTO.getName());
 			pstmt.executeUpdate();
+			return 1;
 		} catch (Exception e) {
-			System.out.println("join error!" + e);
-		} finally {
-			close(conn, pstmt);
+			e.printStackTrace();
+			return -1;
 		}
 	}
 
@@ -104,4 +104,64 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	public String findID(String email) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String id = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select id from member where email = ?");
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+		 if(rs.next())
+		{
+			id = rs.getString(1);
+		}
+	}
+		catch(Exception e)
+		{
+			System.out.println("findID error!" +e);
+		}
+		finally
+		{
+			close(conn,pstmt,rs);
+		}
+	
+		return id;
+	}
+	
+	public String findPW(MemberDTO MDTO) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String password = null;
+		
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select password from member where id = ? and email = ?");
+			pstmt.setString(1, MDTO.getId());
+			pstmt.setString(2, MDTO.getEmail());
+			rs = pstmt.executeQuery();
+		 if(rs.next())
+		{
+			password = rs.getString(1);
+		}
+	}
+		catch(Exception e)
+		{
+			System.out.println("findPW error!" +e);
+		}
+		finally
+		{
+			close(conn,pstmt,rs);
+		}
+	
+		return password;
+	}
 }
+

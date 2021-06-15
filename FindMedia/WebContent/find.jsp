@@ -6,7 +6,8 @@
 <head>
 <title>로그인</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/custom.css">
 </head>
@@ -20,21 +21,9 @@
 		memberID = (String) session.getAttribute("memberID");
 	}
 
-	if(memberID != null) {
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('이미 로그인이 되어있는 상태입니다.');");
-		script.println("location.href = 'index.jsp'");
-		script.println("</script>");
-		script.close();	
-	}
-	
-	application.getContextPath();
-	request.getSession().getServletContext().getRealPath("/");
-	application.getRealPath("/image"); 
 %>	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="find.jsp"><img src="image/logo.JPG" width="200" alt="FindMedia"/></a>
+		<a class="navbar-brand" href="index.jsp"><img src="image/logo.JPG" width="200px" alt="FindMedia"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
@@ -65,25 +54,30 @@
 		</div>
 	</nav>
 	
-	<div style="text-align: center;">
-		<img src="image/login.JPG" width="600" alt="login"/>
-	</div>
 	<div class="container mt-3" style="max-width: 560px;">
-		<form method="post" action="login.do">
+		<h3>아이디 찾기</h3>
+		<form method="post" action="findID.do">
 			<div class="form-group">
-				<input type="text" name="id" class="form-control" placeholder="아이디를 입력하세요."/>
+				<input type="text" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
+			</div>
+			<button type="submit" class="btn btn-danger">아이디 찾기</button>
+		</form>
+		
+		<br><br>
+		
+		<h3>비밀번호 찾기</h3>
+		<form method="post" action="findPW.do">
+		<div class="form-group">
+				<input type="text" name="id" class="form-control" placeholder="아이디를 입력해주세요."/>
 			</div>
 			<div class="form-group">
-				<input type="password" name="password" class="form-control" placeholder="비밀번호를 입력하세요."/>
+				<input type="password" name="email" class="form-control" placeholder="이메일을 입력해주세요."/>
 			</div>
-			
-			<button type="submit" class="btn btn-danger">로그인</button>&nbsp;&nbsp;
+			<button type="submit" class="btn btn-danger">로그인</button>
 		</form>
 	</div>
 	
-	<div style="text-align: center;">
-		<a class="navbar-brand" href="find.jsp"><img src="image/finder.JPG" width="600" alt="FindMedia"/></a>
-	</div>
+	<br><br><br>
 	
 	<footer>
 		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>

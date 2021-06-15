@@ -1,10 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.MemberService;
 import member.MemberDTO;
@@ -15,17 +17,71 @@ public class JoinController implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String nickname = request.getParameter("nickname");
-		String email = request.getParameter("email");
-		String name = request.getParameter("name");
+		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
-		MemberDTO MemberDTO = new MemberDTO(id,password,nickname,email,name);
+		String id = null;
+		String password = null;
+		String nickname = null;
+		String email = null;
+		String name = null;
 		
-		MemberService s = MemberService.getInstance();
-		s.join(MemberDTO); 
+		if(request.getParameter("id") != null) {
+			id = (String) request.getParameter("id");
+		}
+
+		if(request.getParameter("password") != null) {
+			password = (String) request.getParameter("password");
+		}
+
+		if(request.getParameter("nickname") != null) {
+			nickname = (String) request.getParameter("nickname");
+		}
+
+		if(request.getParameter("email") != null) {
+			email = (String) request.getParameter("email");
+		}
 		
-		HttpUtil.forward(request, response, "/index.jsp");
+		if(request.getParameter("name") != null) {
+			name = (String) request.getParameter("name");
+		}
+		
+		if (id == null || password == null || nickname == null || email == null || name == null ||
+				id == "" || password == "" || nickname == "" || email == "" || name == ""){
+
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('입력이 안 된 사항이 있습니다.');");
+			script.println("history.back();");
+			script.println("</script>");
+			script.close();
+
+		} else {
+			
+			MemberDTO MemberDTO = new MemberDTO(id,password,nickname,email,name);
+			
+			MemberService s = MemberService.getInstance();
+			int result = s.join(MemberDTO); 
+
+			if (result == -1) {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('이미 존재하는 아이디입니다.');");
+				script.println("history.back();");
+				script.println("</script>");
+				script.close();
+
+			} else {
+
+				session.setAttribute("memberID", id);
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('회원가입에 성공하셨습니다.');");
+				script.println("location.href = 'index.jsp'");
+				script.println("</script>");
+				script.close();
+			}
+		}
 	}
 }

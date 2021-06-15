@@ -16,7 +16,7 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="index.jsp">FindMedia</a>
+		<a class="navbar-brand" href="find.jsp"><img src="image/logo.JPG" width="200" alt="FindMedia"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
@@ -37,38 +37,39 @@
 		</div>
 	</nav>
 
+	<div style="text-align: center;">
+		<img src="image/join.JPG" width="600" alt="join"/>
+	</div>
 	<div class="container mt-3" style="max-width: 560px;">
 		<form method="post" action="join.do">
 			<div class="form-group">
-				<label>아이디</label> <input type="text" name="id" class="form-control">
+				<input type="text" name="id" class="form-control" placeholder="사용하실 아이디를 입력하세요.">
 			</div>
 
 			<div class="form-group">
-				<label>비밀번호</label> <input type="password" name="password"
-					class="form-control">
+				<input type="password" name="password" class="form-control" placeholder="사용하실 비밀번호를 입력하세요.">
 			</div>
 
 			<div class="form-group">
-				<label>별명</label> <input type="text" name="nickname"
-					class="form-control">
+				<input type="text" name="nickname" class="form-control" placeholder="사용하실 별명을 입력하세요.">
 			</div>
 
 			<div class="form-group">
-				<label>이메일</label> <input type="text" name="email"
-					class="form-control">
+				<input type="text" name="email" class="form-control" placeholder="사용하실 이메일을 입력하세요.">
 			</div>
 
 			<div class="form-group">
-				<label>이름</label> <input type="text" name="name"
-					class="form-control">
+				<input type="text" name="name" class="form-control" placeholder="당신의 이름을 입력해주세요.">
 			</div>
-
-			<button type="submit" class="btn btn-primary">회원가입</button>
+			
+			<div style="text-align: center;">
+				<button type="submit" class="btn btn-danger">회원가입</button>
+			</div>
 		</form>
 	</div>
 
-	<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
-		Copyright (c)YDJ FindMedia ALL Rights reserved.<br>TEL.010-7637-0520
+	<footer>
+		<img src="image/wheel.JPG" width="100%" alt="FindMedia"/>
 	</footer>
 
 	<script src="./js/jquery.min.js"></script>
