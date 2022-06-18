@@ -49,13 +49,15 @@ A[artwork]
    A --> J((memberID))
    A --> K((memberID))
 L[member]
-  L --> M((memberID))
-  L --> N((artworkID))
-  L --> O((memberIP))
-  L --> O((memberIP))
-  L --> O((memberIP))
+  L --> M((id))
+  L --> N((password))
+  L --> O((nickname))
+  L --> O((email))
+  L --> O((name))
 a[likey]
-  a --> b((id))
+  a --> b((memberID))
+  a --> c((artworkID))
+  a --> d((memberIP))
 
 ```
 ___
