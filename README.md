@@ -31,3 +31,31 @@ image 폴더 같은 경우에는 로고 등의 이미지 요소들이 포함 되
 result폴더에는 아이디 찾기/ 비밀번호 찾기를 눌렀을때 표시되는 창들을 저장해 놓았습니다.
 
 백 엔드 작업 같은 경우에는 전부 mvc2작업을 방식을 택했기에, 웹 서비스를 가동시키고 브라우저에서 작업을 요청하면 모든 명령이 src폴더 안, controller 패키지 안의 FrontController에게로 갈 수 있게 web.xml에서 설계를 해놓았습니다. FrontController에서 요청을 받으면 hash map을 이용하여 실체 처리가 이루어지는 클래스(DeleteController, FindIDController, LogfinController 등 FrontController 이외의 컨트롤러들) 로 작업을 이전됩니다. 이전된 곳에서의 작업이 이루어지는 과정에서 각각의 맞는 DTO,DAO,Service 클래스들이 사용이 되어집니다. 요청된 작업이 이루어지면 자바스크립트를 사용해 알림창이 띄워지거나, 다른 페이지로 이동이 되게 설계를 해놓았습니다.
+
+___
+>### 개체-관계 데이트그램(ER) 모델
+
+```mermaid
+graph LR
+A[artwork]
+   A --> B((artworkID))
+   A --> C((memberID))
+   A --> D((title))
+   A --> E((author))
+   A --> F((year))
+   A --> G((kind))
+   A --> H((content))
+   A --> I((likeCount))
+   A --> J((memberID))
+   A --> K((memberID))
+L[member]
+  L --> M((memberID))
+  L --> N((artworkID))
+  L --> O((memberIP))
+  L --> O((memberIP))
+  L --> O((memberIP))
+a[likey]
+  a --> b((id))
+
+```
+___
