@@ -48,16 +48,18 @@ A[artwork]
    A --> I((likeCount))
    A --> J((memberID))
    A --> K((memberID))
+   A --> a
 L[member]
   L --> M((id))
   L --> N((password))
   L --> O((nickname))
   L --> O((email))
   L --> O((name))
-a[likey]
+a{likey}
   a --> b((memberID))
   a --> c((artworkID))
   a --> d((memberIP))
+  a --> L
 
 ```
 ___
