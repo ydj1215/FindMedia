@@ -48,7 +48,7 @@ A[artwork]
    A --> I((likeCount))
    A --> J((memberID))
    A --> K((memberID))
-   A --> a
+   A --> |m|a
 L[member]
   L --> M((id))
   L --> N((password))
@@ -59,7 +59,7 @@ a{likey}
   a --> b((memberID))
   a --> c((artworkID))
   a --> d((memberIP))
-  a --> L
+  a --> |n|L
 
 ```
 ___
